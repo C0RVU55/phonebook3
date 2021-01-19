@@ -256,7 +256,7 @@ public class PhoneDao {
 	}
 	
 	// *********사람 1명 정보 가져오기*********
-	public PhoneVo getPerson(int personId) {
+	public PhoneVo getPerson(int id) {
 		PhoneVo pVo = null; // for문 안에 있어서 return할 게 없으니까 초기값 정해줌.
 		
 		getConnection();
@@ -272,18 +272,18 @@ public class PhoneDao {
 			
 			pstmt = conn.prepareStatement(query);
 
-			pstmt.setInt(1, personId);
+			pstmt.setInt(1, id);
 			
 			rs = pstmt.executeQuery();
 			
 			// 결과처리
 			while(rs.next()) {
-				int personID = rs.getInt("person_id");
+				int personId = rs.getInt("person_id");
 				String name = rs.getString("name");
 				String hp = rs.getString("hp");
 				String company = rs.getString("company");
 				
-				pVo = new PhoneVo(personID, name, hp, company);
+				pVo = new PhoneVo(personId, name, hp, company);
 			}
 		
 			

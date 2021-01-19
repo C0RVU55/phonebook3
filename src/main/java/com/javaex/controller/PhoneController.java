@@ -59,7 +59,6 @@ public class PhoneController {
 		return "/WEB-INF/views/list.jsp";
 	}
 	
-	
 	//등록폼
 	@RequestMapping(value="/writeForm", method= {RequestMethod.GET, RequestMethod.POST})
 	public String writeForm() {
@@ -85,10 +84,44 @@ public class PhoneController {
 	}
 	
 	//삭제 delete
+	@RequestMapping(value="/delete", method= {RequestMethod.GET, RequestMethod.POST})
+	public String delete(@RequestParam("id") int id) {
+		System.out.println("delete");
+		
+		PhoneDao pDao = new PhoneDao();
+		pDao.phoneDelete(id);
+		
+		return "redirect:/phone/list";
+	}
 	
 	//수정폼 modifyForm
+	@RequestMapping(value="/modifyForm", method= {RequestMethod.GET, RequestMethod.POST})
+	public String modifyForm(@RequestParam("id") int id, Model model) { 
+		System.out.println("modifyForm");
+		
+		PhoneDao pDao = new PhoneDao();
+		PhoneVo pVo = pDao.getPerson(id);
+		
+		//파라미터가 있어도 모델을 위처럼 파라미터랑 같이 씀. 
+		//id를 찾을 수 없다고 오류났는데 vo랑 dao에서는 personId로 쓰던 걸 수정폼.jsp에서는 id로 써놔서 그런 거였음.
+		model.addAttribute("pVo", pVo);
+		
+		return "/WEB-INF/views/modifyForm.jsp";
+	}
+	
 	//수정 modify
+	@RequestMapping(value="/modify", method= {RequestMethod.GET, RequestMethod.POST})
+	public String modify(@RequestParam("id") int id, 
+				@RequestParam("name") String name, 
+				@RequestParam("hp") String hp, 
+				@RequestParam("company") String company) {
+		System.out.println("modify");
+		
+		PhoneVo pVo = new PhoneVo(id, name, hp, company);
+		PhoneDao pDao = new PhoneDao();
+		pDao.phoneUpdate(pVo);
+		
+		return "redirect:/phone/list";
+	}
 	
-	
-
 }

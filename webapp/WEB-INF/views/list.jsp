@@ -30,8 +30,8 @@
 				<td>${vo.company }</td>
 			</tr>
 			<tr>
-				<td><a href="/phonebook2/pbc?action=uform&id=${vo.personId }">수정</a></td> <%-- 수정할 때도 id 파라미터로 받음! 잊지말기! --%>
-				<td><a href="/phonebook2/pbc?action=delete&id=${vo.personId }">삭제</a></td>
+				<td><a href="/phonebook3/phone/modifyForm?id=${vo.personId }">수정</a></td> <%-- 수정할 때도 id 파라미터로 받음! 잊지말기! --%>
+				<td><a href="/phonebook3/phone/delete?id=${vo.personId }">삭제</a></td>
 			</tr>
 		</table>
 		<br>
