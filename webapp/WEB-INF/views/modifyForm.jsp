@@ -20,7 +20,7 @@
 		이름(name) : <input type="text" name="name" value="${pVo.name}"><br> 
 		핸드폰(hp) : <input type="text" name="hp" value="${pVo.hp}"><br>
 		회사(company) : <input type="text" name="company" value="${pVo.company}"><br>
-		코드(id) : <input type="hidden" name="id" value="${pVo.personId}"> <br>
+		코드(id) : <input type="text" name="personId" value="${pVo.personId}"> <br>
 		<br>
 		
 		<button type="submit">수정</button>
